@@ -1,0 +1,74 @@
+@import "~@skybonds/ui-styles/styles/common/variables"
+
+.listBox
+  width: 576px
+  background: #a2b0c2
+  padding: 6px 20px 28px 6px
+  overflow: auto
+
+.ul
+  display: flex
+  align-items: flex-start
+  justify-content: flex-start
+  flex-flow: column wrap
+  align-content: flex-start
+  height: 100%
+
+.item
+  padding: 5px 40px 4px 20px
+  cursor: pointer
+  width: 30%
+  position: relative
+  white-space: nowrap
+  text-overflow: ellipsis
+  overflow: hidden
+  color: $colorWhite
+
+  input
+    border: none
+    width: 100%
+    &:disabled
+      text-overflow: ellipsis
+      color: $colorWhite
+      cursor: pointer
+      background-color: transparent
+
+  &:hover
+    background-color: rgba(135,145,160,.6)
+
+    .icon_edit,
+    .icon_trash
+      display: inline-block
+
+  &.active
+    background-color: rgba(135,145,160,.6)
+
+.icon
+  width: 12px
+  height: 12px
+  color: #656b73
+  fill: currentColor
+  margin-bottom: -2px
+  position: absolute
+  top: 50%
+  transform: translateY(-50%)
+
+  &_market
+    left: 6px
+
+  &_edit,
+  &_trash
+    display: none
+
+  &_edit
+    right: 20px
+    width: auto
+
+  &_trash
+    right: 4px
+
+  &_edit:hover
+    color: $colorLightContrast
+
+  &_trash:hover
+    color: $colorRed
