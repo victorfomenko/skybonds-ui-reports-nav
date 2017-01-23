@@ -13,6 +13,12 @@ class List extends Component {
   }
 
 
+  componentWillReceiveProps(props){
+    const reports = this.formatReportsState(props);
+    this.setState({ reports })
+  }
+
+
   formatReportsState(props){
     return props.reports.map((item)=>{
       item.disabled = true;
@@ -64,6 +70,16 @@ class List extends Component {
           id = {item.id}
           onRenameReport = {this.props.onRenameReport}
           onClickRemoveBtn = {this.onClickRemoveBtn}
+          onChange={ (value) => {
+            const newReports = reports.map((item)=>{
+              if(value.id === item.id) {
+                item.name = value.name
+              }
+              return item
+            });
+            this.setState({reports:  newReports});
+            }
+          }
         />
       )
     });

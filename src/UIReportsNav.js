@@ -27,9 +27,9 @@ class UIReportsNav extends Component {
   expandReportNav(e){
     e.stopPropagation();
     var target = e.target;
-    if(this.hasClass(target, style.icon) || this.hasClass(target, style.reports_open)){return}
-
     var currentTarget = e.currentTarget;
+    if(this.hasClass(target, style.icon) || this.hasClass(currentTarget, style.reports_open)){return}
+
     currentTarget.className = `${currentTarget.className} ${style.reports_open}`;
   }
 
@@ -40,7 +40,7 @@ class UIReportsNav extends Component {
 
   render(){
     return (
-      <div className={style.reports} onClick={this.onReportsClick} onBlur={this.onBlur}>
+      <div className={style.reports} onClick={this.onReportsClick}>
         <Groups
           reports={this.props.reports}
         />

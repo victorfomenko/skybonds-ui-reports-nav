@@ -56,6 +56,7 @@ class ListItem extends Component {
     const newName = el.value;
 
     this.setState({disabled: true});
+    this.props.onChange(this.state);
     this.props.onRenameReport(this.state.id, newName)
   }
 
