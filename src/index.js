@@ -42,7 +42,8 @@ const props = {
     },
     {
       id: '6867',
-      name: 'reportName7'
+      name: 'reportName7',
+      active: true
     },
     {
       id: '6868',
