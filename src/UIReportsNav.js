@@ -17,10 +17,12 @@ class UIReportsNav extends Component {
   }
 
   addListener(){
-    window.onclick = (e) => {
+    window.onclick = () => {
       var element = document.querySelector(`.${style.reports}`);
-      var newClassName = element.className.replace(`${style.reports_open}`, '');
-      element.className = newClassName;
+      if(element.className){
+        var newClassName = element.className.replace(`${style.reports_open}`, '');
+        element.className = newClassName;
+      }
     }
   }
 

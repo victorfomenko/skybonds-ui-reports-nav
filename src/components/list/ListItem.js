@@ -80,7 +80,8 @@ class ListItem extends Component {
     return(
       <li className={`${reportsStyle.item}${activeClass}`} onClick={(e)=>{this.props.onClick(e, this.state.id)}}>
         <svg className={`${reportsStyle.icon} ${reportsStyle.icon_market}`}>
-          <use xlinkHref="#explorer-market"></use>
+          {/*<use xlinkHref="#explorer-market"></use>*/}
+          <use xlinkHref="/static/icons/sprite.svg#explorer-market"></use>
         </svg>
         <input
           type="text"
@@ -95,7 +96,8 @@ class ListItem extends Component {
             edit</span>
         <svg className={`${reportsStyle.icon} ${reportsStyle.icon_trash}`}
              onClick={this.onClickRemoveBtn}>
-          <use xlinkHref="#explorer-trash"></use>
+          {/*<use xlinkHref="#explorer-trash"></use>*/}
+          <use xlinkHref="/static/icons/sprite.svg#explorer-trash"></use>
         </svg>
       </li>
     )

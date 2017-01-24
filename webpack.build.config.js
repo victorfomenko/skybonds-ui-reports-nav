@@ -11,10 +11,10 @@ module.exports = {
     library: '',
     libraryTarget: 'commonjs2'
   },
-  externals: {
-    "react": "React",
-    "react-dom": "ReactDOM"
-  },
+  // externals: {
+  //   "react": "React",
+  //   "react-dom": "ReactDOM"
+  // },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
