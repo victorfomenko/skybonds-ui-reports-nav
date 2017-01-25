@@ -9,7 +9,7 @@ class Groups extends Component {
 
   render(){
     return (
-      <div className={style.groups}>'12355'</div>
+      <div className={style.groups}>'122135s5'</div>
     )
   }
 }

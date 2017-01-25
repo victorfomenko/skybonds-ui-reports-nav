@@ -1,7 +1,7 @@
 import { AppContainer } from 'react-hot-loader';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import UIReportsNav from './UIReportsNav';
+import Root from './containers/Root';
 require('../node_modules/@skybonds/ui-styles/style.sass');
 
 const rootEl = document.getElementById('root');
@@ -68,7 +68,7 @@ const props = {
 
 ReactDOM.render(
   <AppContainer>
-    <UIReportsNav
+    <Root
       reports={props.reports}
       onRemoveReport={props.onRemoveReport}
       onRenameReport={props.onRenameReport}
@@ -79,13 +79,13 @@ ReactDOM.render(
 );
 
 if (module.hot) {
-  module.hot.accept('./UIReportsNav', () => {
+  module.hot.accept('./containers/Root', () => {
     // If you use Webpack 2 in ES modules mode, you can
     // use <App /> here rather than require() a <NextApp />.
-    const NextApp = require('./UIReportsNav').default;
+    const NextRoot = require('./containers/Root').default;
     ReactDOM.render(
       <AppContainer>
-        <NextApp
+        <NextRoot
           reports={props.reports}
           onRemoveReport={props.onRemoveReport}
           onRenameReport={props.onRenameReport}
