@@ -5,7 +5,7 @@ var combineLoaders = require('webpack-combine-loaders');
 
 module.exports = {
   devtool: 'cheap-module-source-map',
-  entry: './src/UIReportsNav',
+  entry: './src/containers/Root',
   output: {
     path: __dirname,
     filename: 'index.js',
@@ -24,6 +24,7 @@ module.exports = {
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin(),
     new ExtractTextPlugin("styles.css")
   ],
   module: {
