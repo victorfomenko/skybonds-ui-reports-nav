@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var combineLoaders = require('webpack-combine-loaders');
 
 module.exports = {
   devtool: 'eval',
@@ -28,10 +29,17 @@ module.exports = {
     },
     {
       test: /(\.sass|\.css)/,
-      loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!sass'),
-      options: {
-        camelCase: true
-      }
+      loader: combineLoaders([
+        {loader: 'style-loader'},
+        {
+          loader: 'css-loader',
+          query: {
+            modules: true,
+            localIdentName: '[name]__[local]___[hash:base64:5]'
+          }
+        },
+        {loader: 'sass'}
+      ]),
     }]
   }
 };

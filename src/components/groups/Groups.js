@@ -9,12 +9,10 @@ class Groups extends Component {
 
   render(){
     return (
-      <div className={style.groups}>'123'</div>
+      <div className={style.groups}>'12355'</div>
     )
   }
 }
-
-
 
 Groups.propTypes = {
   reports: React.PropTypes.array.isRequired,

@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var combineLoaders = require('webpack-combine-loaders');
 
 module.exports = {
   devtool: 'cheap-module-source-map',
@@ -32,10 +33,20 @@ module.exports = {
       loaders: ['babel'],
       exclude: /(node_modules|bower_components)/,
       include: path.join(__dirname, 'src')
-    },
-    {
+    },{
       test: /(\.sass|\.css)/,
-      loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!sass')
+      loader: ExtractTextPlugin.extract(
+        combineLoaders([
+          {
+            loader: 'css-loader',
+            query: {
+              modules: true,
+              localIdentName: '[name]__[local]___[hash:base64:5]'
+            }
+          },
+          {loader: 'sass'}
+        ])
+      )
     }]
   }
 };
