@@ -70,5 +70,4 @@ UIReportsNav.propTypes = {
   onSelectReport: React.PropTypes.func.isRequired,
 };
 
-//export default UIReportsNav;
-module.exports = UIReportsNav;
+export default UIReportsNav;

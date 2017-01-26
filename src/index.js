@@ -10,7 +10,7 @@ const props = {
   reports: [
     {
       id: '6867',
-      name: 'reportName1reportName1reportName1'
+      name: 'reportName1re'
     },
     {
       id: '6862',
