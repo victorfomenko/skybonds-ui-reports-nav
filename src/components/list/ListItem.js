@@ -19,7 +19,9 @@ class ListItem extends Component {
         id: props.id,
         name: props.name,
         disabled: props.disabled,
-        active: props.active
+        active: props.active,
+        discussToken: props.discussToken,
+        discussUnseen: props.discussUnseen
       }
     })
   }
@@ -29,7 +31,9 @@ class ListItem extends Component {
       id: props.id,
       name: props.name,
       disabled: props.disabled,
-      active: props.active
+      active: props.active,
+      discussToken: props.discussToken,
+      discussUnseen: props.discussUnseen
     }
   }
 
@@ -82,6 +86,18 @@ class ListItem extends Component {
     const name = this.state.name;
     const disabled = this.state.disabled;
     const activeClass = this.state.active ? ` ${reportsStyle.active}` : '' ;
+    const discussToken = this.state.discussToken;
+    const discussUnseen = this.state.discussUnseen;
+
+    let discussionIcon = null;
+    if (discussToken.length) {
+        discussionIcon = (
+            <svg className={`${reportsStyle.icon} ${reportsStyle.icon_messenger}`}>
+                {/*<use xlinkHref="#explorer-market"></use>*/}
+                <use xlinkHref="/static/icons/sprite.svg#messenger"></use>
+            </svg>
+        );
+    }
 
     return(
       <li className={`${reportsStyle.item}${activeClass}`} onClick={(e)=>{this.props.onClick(e, this.state.id)}}>
@@ -89,6 +105,8 @@ class ListItem extends Component {
           {/*<use xlinkHref="#explorer-market"></use>*/}
           <use xlinkHref="/static/icons/sprite.svg#explorer-market"></use>
         </svg>
+        { discussionIcon }
+        <span className={`${reportsStyle.unseen}`}>{discussUnseen}</span>
         <input
           type="text"
           value={name}

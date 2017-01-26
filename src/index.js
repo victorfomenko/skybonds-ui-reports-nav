@@ -9,7 +9,7 @@ const rootEl = document.getElementById('root');
 const props = {
   reports: [
     {
-      id: '6867',
+      id: '686119',
       name: 'reportName1re'
     },
     {
@@ -38,12 +38,16 @@ const props = {
     },
     {
       id: '6866',
-      name: 'reportName6'
+      name: 'reportName6',
+      discussToken: 'abc',
+      discussUnseen: 5
     },
     {
       id: '6867',
       name: 'reportName7',
-      active: true
+      active: true,
+      discussToken: 'cde',
+      discussUnseen: 92
     },
     {
       id: '6868',
@@ -51,7 +55,9 @@ const props = {
     },
     {
       id: '6869',
-      name: 'reportName9'
+      name: 'reportName9',
+      discussToken: 'bcd',
+      discussUnseen: 0
     }
   ],
   onRemoveReport: (id) => {

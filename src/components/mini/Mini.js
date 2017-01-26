@@ -17,7 +17,9 @@ class Mini extends Component {
     var id = props.reports[0].id,
         name = props.reports[0].name,
         disabled = props.reports[0].disabled || true,
-        active = props.reports[0].active || false;
+        active = props.reports[0].active || false,
+        discussToken = props.reports[0].discussToken || '',
+        discussUnseen = props.reports[0].discussUnseen || null;
 
     props.reports.forEach((item) => {
       if(item.active){
@@ -25,9 +27,11 @@ class Mini extends Component {
         name = item.name;
         disabled = item.disabled || true;
         active = item.active || false;
+        discussToken = item.discussToken || '';
+        discussUnseen = item.discussUnseen || null;
       }
     });
-    return { id, name, disabled, active }
+    return { id, name, disabled, active, discussToken, discussUnseen }
   }
 
 
@@ -38,6 +42,8 @@ class Mini extends Component {
         name={this.state.name}
         active={this.state.active}
         disabled={this.state.disabled}
+        discussToken={this.state.discussToken}
+        discussUnseen={this.state.discussUnseen}
         onRenameReport={this.props.onRenameReport}
         onClickRemoveBtn={this.props.onClickRemoveBtn}
       />

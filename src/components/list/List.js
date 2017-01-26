@@ -21,6 +21,8 @@ class List extends Component {
     return props.reports.map((item)=>{
       item.disabled = true;
       item.active = item.active || false;
+      item.discussToken = item.discussToken || '';
+      item.discussUnseen = item.discussUnseen || null;
       return item
     })
   }
@@ -64,6 +66,8 @@ class List extends Component {
           key={index}
           active = {item.active}
           disabled = {item.disabled}
+          discussToken = {item.discussToken}
+          discussUnseen = {item.discussUnseen}
           name = {item.name}
           id = {item.id}
           onRenameReport = {this.props.onRenameReport}
