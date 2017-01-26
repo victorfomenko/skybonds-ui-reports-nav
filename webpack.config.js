@@ -29,17 +29,18 @@ module.exports = {
     },
     {
       test: /(\.sass|\.css)/,
-      loader: combineLoaders([
-        {loader: 'style-loader'},
-        {
-          loader: 'css-loader',
-          query: {
-            modules: true,
-            localIdentName: '[name]__[local]___[hash:base64:5]'
-          }
-        },
-        {loader: 'sass'}
-      ]),
+      loader: ExtractTextPlugin.extract(
+        combineLoaders([
+          {
+            loader: 'css-loader',
+            query: {
+              modules: true,
+              localIdentName: '[name]__[local]___[hash:base64:5]'
+            }
+          },
+          {loader: 'sass'}
+        ])
+      )
     }]
   }
 };

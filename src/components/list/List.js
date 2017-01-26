@@ -12,12 +12,10 @@ class List extends Component {
     this.onClickLiItem = this.onClickLiItem.bind(this);
   }
 
-
   componentWillReceiveProps(props){
     const reports = this.formatReportsState(props);
     this.setState({ reports })
   }
-
 
   formatReportsState(props){
     return props.reports.map((item)=>{

@@ -8,18 +8,35 @@ class UIReportsNav extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      reports: props.reports
+    };
     this.onReportsClick = this.onReportsClick.bind(this);
     this.addListener();
+    this._initEEListners();
   }
+
+  _initEEListners(){
+    if(this.props.ee != null) {
+      this.props.ee.on('render', this._onEERender.bind(this))
+    }
+  }
+
+
+  _onEERender(reports=[]) {
+    this.setState({ reports });
+  }
+
 
   onReportsClick(e){
     this.expandReportNav(e)
   }
 
+
   addListener(){
     window.onclick = () => {
       var element = document.querySelector(`.${style.reports}`);
-      if(element.className){
+      if(element !== null){
         var newClassName = element.className.replace(`${style.reports_open}`, '');
         element.className = newClassName;
       }
@@ -44,7 +61,7 @@ class UIReportsNav extends Component {
     return (
       <div className={style.reports} onClick={this.onReportsClick}>
         <Groups
-          reports={this.props.reports}
+          reports={this.state.reports}
         />
         {/*<Mini*/}
           {/*reports={this.props.reports}*/}
@@ -53,7 +70,7 @@ class UIReportsNav extends Component {
           {/*onSelectReport={this.props.onSelectReport}*/}
         {/*/>*/}
         <List
-          reports={this.props.reports}
+          reports={this.state.reports}
           onRemoveReport={this.props.onRemoveReport}
           onRenameReport={this.props.onRenameReport}
           onSelectReport={this.props.onSelectReport}
