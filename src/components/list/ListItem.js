@@ -9,6 +9,7 @@ class ListItem extends Component {
     this.onClickEditBtn = this.onClickEditBtn.bind(this);
     this.onBlurInput = this.onBlurInput.bind(this);
     this.onChangeInput = this.onChangeInput.bind(this);
+    this.onClickInput = this.onClickInput.bind(this);
   }
 
   componentWillReceiveProps(props){
@@ -43,6 +44,11 @@ class ListItem extends Component {
     },0);
 
     return true
+  }
+
+
+  onClickInput(e){
+    e.stopPropagation();
   }
 
 
@@ -90,6 +96,7 @@ class ListItem extends Component {
           onBlur={this.onBlurInput}
           onKeyPress={this.onKeypressInput}
           onChange={this.onChangeInput}
+          onClick={this.onClickInput}
         />
         <span className={`${reportsStyle.icon} ${reportsStyle.icon_edit}`}
               onClick={this.onClickEditBtn}>

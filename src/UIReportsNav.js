@@ -9,7 +9,8 @@ class UIReportsNav extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      reports: props.reports
+      reports: props.reports,
+      open: false
     };
     this.onReportsClick = this.onReportsClick.bind(this);
     this.addListener();
@@ -29,28 +30,24 @@ class UIReportsNav extends Component {
 
 
   onReportsClick(e){
-    this.expandReportNav(e)
-  }
-
-
-  addListener(){
-    window.onclick = () => {
-      var element = document.querySelector(`.${style.reports}`);
-      if(element !== null){
-        var newClassName = element.className.replace(`${style.reports_open}`, '');
-        element.className = newClassName;
-      }
-    }
-  }
-
-  expandReportNav(e){
     e.stopPropagation();
     var target = e.target;
     var currentTarget = e.currentTarget;
     if(this.hasClass(target, style.icon) || this.hasClass(currentTarget, style.reports_open)){return}
 
-    currentTarget.className = `${currentTarget.className} ${style.reports_open}`;
+    this.setState({open: true});
   }
+
+
+  addListener(){
+    window.onclick = () => {
+      var element = document.querySelector(`.${style.reports_open}`);
+      if(element !== null){
+        this.setState({open: false});
+      }
+    }
+  }
+
 
   hasClass(el, cls){
     const className = el.getAttribute('class');
@@ -58,8 +55,9 @@ class UIReportsNav extends Component {
   }
 
   render(){
+    const openClass = `${style.reports} ${this.state.open ? style.reports_open : ''}`;
     return (
-      <div className={style.reports} onClick={this.onReportsClick}>
+      <div className={openClass} onClick={this.onReportsClick}>
         <Groups
           reports={this.state.reports}
         />
@@ -76,6 +74,7 @@ class UIReportsNav extends Component {
           onSelectReport={this.props.onSelectReport}
         />
       </div>
+
     );
   }
 }
