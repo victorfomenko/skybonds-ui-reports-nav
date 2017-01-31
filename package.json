@@ -1,6 +1,6 @@
 {
   "name": "@skybonds/ui-reports-nav",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Reports navigation instrument for skybonds app",
   "scripts": {
     "start": "node server.js",
