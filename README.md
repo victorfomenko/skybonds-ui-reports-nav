@@ -15,6 +15,7 @@ open http://localhost:3000
 ```
 npm install
 npm run build
+npm publish
 ```
 
 ### Linting
