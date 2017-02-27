@@ -14,18 +14,10 @@ class UIReportsNav extends Component {
     };
     this.onReportsClick = this.onReportsClick.bind(this);
     this.addListener();
-    this._initEEListners();
   }
 
-  _initEEListners(){
-    if(this.props.ee != null) {
-      this.props.ee.on('render', this._onEERender.bind(this))
-    }
-  }
-
-
-  _onEERender(reports=[]) {
-    this.setState({ reports });
+  componentWillReceiveProps(nextProps){
+    this.setState({ reports: nextProps.reports });
   }
 
 
