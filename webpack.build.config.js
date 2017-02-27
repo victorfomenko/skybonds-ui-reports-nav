@@ -47,6 +47,12 @@ module.exports = {
           {loader: 'sass'}
         ])
       )
-    }]
+    }, {
+        test: /\.svg$/,
+        loader: 'svg-sprite?' + JSON.stringify({
+          name: '[name]_[hash]',
+          prefixize: false
+        })
+      }]
   }
 };

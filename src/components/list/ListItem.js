@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Icon, GLYPHS } from '../../components/Icons';
 import reportsStyle from '../../reports.sass';
 
 class ListItem extends Component {
@@ -101,10 +102,7 @@ class ListItem extends Component {
 
     return(
       <li className={`${reportsStyle.item}${activeClass}`} onClick={(e)=>{this.props.onClick(e, this.state.id)}}>
-        <svg className={`${reportsStyle.icon} ${reportsStyle.icon_market}`}>
-          {/*<use xlinkHref="#explorer-market"></use>*/}
-          <use xlinkHref="/static/icons/sprite.svg#explorer-market"></use>
-        </svg>
+        <Icon className={`${reportsStyle.icon} ${reportsStyle.icon_market}`} glyph={GLYPHS.MARKET} />
         { discussionIcon }
         <span className={`${reportsStyle.unseen}`}>{discussUnseen}</span>
         <input
@@ -119,11 +117,12 @@ class ListItem extends Component {
         <span className={`${reportsStyle.icon} ${reportsStyle.icon_edit}`}
               onClick={this.onClickEditBtn}>
             edit</span>
-        <svg className={`${reportsStyle.icon} ${reportsStyle.icon_trash}`}
-             onClick={this.onClickRemoveBtn}>
-          {/*<use xlinkHref="#explorer-trash"></use>*/}
-          <use xlinkHref="/static/icons/sprite.svg#explorer-trash"></use>
-        </svg>
+
+        <Icon
+          className={`${reportsStyle.icon} ${reportsStyle.icon_trash}`}
+          onClick={this.onClickRemoveBtn}
+          glyph={GLYPHS.TRASH} width="9px" height="9px" />
+
       </li>
     )
   }
